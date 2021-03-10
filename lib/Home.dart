@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bitcoin_price/AllPrices.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -20,6 +21,11 @@ class _HomeState extends State<Home> {
     });
 
     print("Resultado : " + retorno["BRL"]["buy"].toString());
+  }
+
+  void _allPrices() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => AllPrices()));
   }
 
   @override
@@ -48,7 +54,21 @@ class _HomeState extends State<Home> {
                 color: Colors.orange,
                 padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
                 onPressed: _recuperarPreco,
-              )
+              ),
+              // ignore: deprecated_member_use
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                // ignore: deprecated_member_use
+                child: RaisedButton(
+                  child: Text(
+                    "Outros",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  color: Colors.grey,
+                  padding: EdgeInsets.fromLTRB(45, 15, 45, 15),
+                  onPressed: _allPrices,
+                ),
+              ),
             ],
           ),
         ),
